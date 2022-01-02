@@ -44,3 +44,5 @@ files:
 resources: {}
 
 nodeSelector: {}
+
+# podAnnotations: {}

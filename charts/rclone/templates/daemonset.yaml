@@ -15,6 +15,12 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: {{ include "rclone.name" . }}
+      {{- if .Values.podAnnotations }}
+      annotations:
+        {{- range $key, $value := .Values.podAnnotations }}
+        {{ $key }}: {{ $value | quote }}
+        {{- end }}
+      {{- end }}
     spec:
     {{- with .Values.imagePullSecrets }}
       imagePullSecrets:

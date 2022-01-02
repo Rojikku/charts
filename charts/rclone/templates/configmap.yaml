@@ -5,4 +5,4 @@ metadata:
   labels:
 {{ include "rclone.labels" . | indent 4 }}
 data:
-{{ include "files" . | indent 2 }}
+{{- toYaml .Values.files | nindent 2 }}

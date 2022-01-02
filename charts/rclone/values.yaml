@@ -43,8 +43,21 @@ rclone:
 files:
   rclone.conf: |
     # Put rclone.conf here
-  config-sa.json: |
+  # config-sa.json: |
     # Example of another file here
+
+
+# Additional Mount Support
+# addVolumeMounts:
+#   - name: test
+#     mountPath: /test
+#   - name: two
+#     mountPath: /two
+# addVolumes:
+#   - name: test
+#   - name: two
+#     configMap:
+#       name: two
 
 resources: {}
 

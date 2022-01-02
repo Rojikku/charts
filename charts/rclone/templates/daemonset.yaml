@@ -75,6 +75,9 @@ spec:
         - name: media
           mountPath: {{ .Values.rclone.path }}
           mountPropagation: Bidirectional
+        {{- with .Values.addVolumeMounts }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
       volumes:
       - name: config
         configMap:
@@ -82,6 +85,9 @@ spec:
       - name: media
         hostPath:
           path: {{ .Values.rclone.path }}
+      {{- with .Values.addVolumes }}
+      {{- toYaml . | nindent 6 }}
+      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

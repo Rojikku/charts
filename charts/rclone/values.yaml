@@ -1,0 +1,46 @@
+# Default values for rclone.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+images:
+  container:
+    repository: rclone/rclone
+    tag: 1.57.0
+  pullPolicy: IfNotPresent
+
+# imagePullSecrets:
+
+rclone:
+  #  remote to mount from rclone config
+  remote: "drive"
+  # mount path for  remote
+  path: /mnt/rclone
+  # read only file system for remote (to protect from deletion of files)
+  readOnly: false
+  # additional arguments for customising rclone
+  # mount options can be found here - https://rclone.org/commands/rclone_mount/#options
+  additionalArgs:
+    - --buffer-size=128M
+    - --drive-chunk-size=32M
+    - --umask=002
+    - --uid=1000
+    - --gid=1000
+    - --vfs-read-chunk-size=128M
+    - --vfs-read-chunk-size-limit=off
+    - --cache-workers=8
+    - --cache-writes
+    - --dir-cache-time=2h
+    - --drive-chunk-size=32M
+    - --timeout=1h
+    - --poll-interval=15s
+    - --no-modtime
+    - --drive-use-trash
+
+# Config files to include in configmap here
+files:
+  rclone.conf: |
+    # Put rclone.conf here
+  # config-sa.json: |
+
+resources: {}
+
+nodeSelector: {}

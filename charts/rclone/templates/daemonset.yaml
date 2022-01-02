@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: {{ include "rclone.fullname" . }}
+  labels:
+{{ include "rclone.labels" . | indent 4 }}
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "rclone.name" . }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "rclone.name" . }}
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "rclone.name" . }}
+    spec:
+    {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      terminationGracePeriodSeconds: 120
+      containers:
+      - name: {{ .Chart.Name }}
+        image: "{{ .Values.images.container.repository }}:{{ .Values.images.container.tag }}"
+        args:
+          - mount
+          - "{{ .Values.rclone.remote }}"
+          - {{ .Values.rclone.path }}
+          - --config=/etc/rclone/rclone.conf
+          - --allow-non-empty
+          - --allow-other
+        {{- if .Values.rclone.readOnly }}
+          - --read-only
+        {{ end }}
+        {{- range .Values.rclone.additionalArgs }}
+          - {{ . }}
+        {{- end }}
+        lifecycle:
+          preStop:
+            exec:
+              command: ["/bin/sh","-c","fusermount -uz {{ .Values.rclone.path }}"]
+        startupProbe:
+          exec:
+            command:
+            - cat
+            - {{ .Values.rclone.path }}/health
+          initialDelaySeconds: 5
+          periodSeconds: 15
+          failureThreshold: 30
+        livenessProbe:
+          exec:
+            command:
+            - cat
+            - {{ .Values.rclone.path }}/health
+          timeoutSeconds: 5
+          periodSeconds: 15
+          failureThreshold: 8
+        # Necessary to mount to host
+        securityContext:
+          privileged: true
+
+        resources:
+{{- toYaml .Values.resources | nindent 10 }}
+        volumeMounts:
+        - name: config
+          mountPath: /etc/rclone
+        - name: media
+          mountPath: {{ .Values.rclone.path }}
+          mountPropagation: Bidirectional
+      volumes:
+      - name: config
+        configMap:
+          name: {{ include "rclone.fullname" . }}-configmap
+      - name: media
+        hostPath:
+          path: {{ .Values.rclone.path }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

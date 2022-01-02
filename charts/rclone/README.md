@@ -19,5 +19,6 @@ The following tables lists the configurable parameters of the rclone chart and t
 | `rclone.additionalArgs`         | rclone additional arguments to pass for mount options | `See values.yaml` |
 | `nodeSelector`             | Node labels for pod assignment | `` |
 | `resources`                | CPU/Memory resource requests/limits | `{}` |
+| `files`                | Files which should be added to the config map | `{}` |
 
 Read through the [values.yaml](values.yaml) file. It has several commented out suggested values.

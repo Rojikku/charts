@@ -43,7 +43,8 @@ rclone:
 files:
   rclone.conf: |
     # Put rclone.conf here
-  # config-sa.json: |
+  config-sa.json: |
+    # Example of another file here
 
 resources: {}
 

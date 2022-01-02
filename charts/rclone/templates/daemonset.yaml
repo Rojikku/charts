@@ -12,9 +12,6 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: {{ include "rclone.name" . }}
-    metadata:
-      labels:
-        app.kubernetes.io/name: {{ include "rclone.name" . }}
       {{- if .Values.podAnnotations }}
       annotations:
         {{- range $key, $value := .Values.podAnnotations }}

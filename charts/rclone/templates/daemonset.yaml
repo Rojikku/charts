@@ -40,6 +40,9 @@ spec:
         {{- if .Values.rclone.readOnly }}
           - --read-only
         {{ end }}
+        {{- if .Values.rclone.impersonate }}
+          - --drive-impersonate={{ .Values.rclone.impersonateEmail }}
+        {{ end }}
         {{- range .Values.rclone.additionalArgs }}
           - {{ . }}
         {{- end }}

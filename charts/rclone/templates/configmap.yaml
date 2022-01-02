@@ -5,4 +5,4 @@ metadata:
   labels:
 {{ include "rclone.labels" . | indent 4 }}
 data:
-{{ include "rclone.files" . | indent 2 }}
+{{ include "files" . | indent 2 }}

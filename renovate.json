@@ -8,6 +8,17 @@
     ],
     "regexManagers": [
         {
+            "description": "Update chart rclone docker image references",
+            "fileMatch": [
+                "^charts\\/rclone\\/Chart\\.yaml$"
+            ],
+            "matchStrings": [
+                "appVersion: '(?<currentValue>.*?)'\\s+",
+            ],
+            "depNameTemplate": "rclone/rclone",
+            "datasourceTemplate": "docker"
+        },
+        {
             "description": "Update rclone docker image references",
             "fileMatch": [
                 "^charts\\/rclone\\/README\\.md$"

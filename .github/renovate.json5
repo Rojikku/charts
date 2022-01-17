@@ -1,11 +1,19 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "extends": [
-        "local>renovatebot/.github"
+        ":enableRenovate",
+        "config:base",
+        ":disableRateLimiting",
+        ":dependencyDashboard",
+        ":semanticCommits",
+        ":separatePatchReleases",
+        "docker:enableMajor",
+        "local>charts/.github"
     ],
     "assignees": [
         "Rojikku"
     ],
+    "timezone": "America/New_York",
     "regexManagers": [
         {
             "description": "Update chart rclone docker image references",

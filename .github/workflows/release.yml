@@ -1,13 +1,10 @@
 name: Release Charts
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'charts/**'
-      - '!charts/**/README.md'
-      - '!charts/**/README.md.gotmpl'
+  workflow_run:
+    workflows: ["Lint and Test Chart"]
+    types:
+      - completed
 
 jobs:
   release:

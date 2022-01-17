@@ -46,4 +46,15 @@ entries:
     urls:
     - https://github.com/Rojikku/charts/releases/download/rclone-v0.1.4/rclone-v0.1.4.tgz
     version: v0.1.4
-generated: "2022-01-02T22:21:16.466393637Z"
+  restore:
+  - apiVersion: v2
+    appVersion: 1.35.0
+    created: "2022-01-17T20:20:32.684925747Z"
+    description: A busybox helm chart for use with restoring PVCs through stash
+    digest: f567782921c732ba776b73aaa7db3ff59d04a44db93610698eda63c626348656
+    name: restore
+    type: application
+    urls:
+    - https://github.com/Rojikku/charts/releases/download/restore-0.1.0/restore-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-01-17T20:20:32.684937847Z"

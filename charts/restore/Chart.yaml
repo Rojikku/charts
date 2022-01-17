@@ -2,5 +2,5 @@ apiVersion: v2
 name: restore
 description: A busybox helm chart for use with restoring PVCs through stash
 type: application
-version: 0.1.0
+version: 0.1.1
 appVersion: "1.35.0"

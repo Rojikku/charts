@@ -8,8 +8,8 @@
         ":semanticCommits",
         ":separatePatchReleases",
         "docker:enableMajor",
-        "local>charts/.github/semanticCommits.json"
-    ],
+        "github>Rojikku/charts//.github/renovate/semanticCommits"
+],
     "assignees": [
         "Rojikku"
     ],

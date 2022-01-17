@@ -8,7 +8,7 @@
         ":semanticCommits",
         ":separatePatchReleases",
         "docker:enableMajor",
-        "local>charts/.github"
+        "local>charts/.github/semanticCommits.json"
     ],
     "assignees": [
         "Rojikku"

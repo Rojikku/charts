@@ -44,3 +44,4 @@ jobs:
           version: v1.3.0 # renovate: datasource=github-releases depName=chart-releaser lookupName=helm/chart-releaser
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          CR_SKIP_EXISTING: true

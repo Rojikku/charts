@@ -13,7 +13,7 @@
                 "^charts\\/rclone\\/Chart\\.yaml$"
             ],
             "matchStrings": [
-                "appVersion: '(?<currentValue>.*?)'\\s+",
+                "appVersion: '(?<currentValue>.*?)'\\s+"
             ],
             "depNameTemplate": "rclone/rclone",
             "datasourceTemplate": "docker"

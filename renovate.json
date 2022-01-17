@@ -1,0 +1,63 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        "local>renovatebot/.github"
+    ],
+    "assignees": [
+        "Rojikku"
+    ],
+    "regexManagers": [
+        {
+            "description": "Update rclone docker image references",
+            "fileMatch": [
+                "^charts\\/rclone\\/README\\.md$"
+            ],
+            "matchStrings": [
+                "\\|\\s+image.tag\\s+\\|\\s+string\\s+\\|\\s+`\"(?<currentValue>.*?)\"`\\s+\\|\\s+\\|\\s+",
+                "(:\\s|-)(?<currentValue>\\d+\\.\\d+\\.\\d+(?:\\+\\d+)?)"
+            ],
+            "depNameTemplate": "rclone/rclone",
+            "datasourceTemplate": "docker"
+        },
+        {
+            "description": "Update kindest kubernetes references",
+            "fileMatch": [
+                "^\\.github\\/workflows\\/[^/]+\\.ya?ml$"
+            ],
+            "matchStrings": [
+                "\\s+- (?<currentValue>v\\d+\\.\\d+\\.\\d+) # renovate: kindest\\s+"
+            ],
+            "depNameTemplate": "kindest/node",
+            "datasourceTemplate": "docker"
+        }
+    ],
+    "packageRules": [
+        {
+            "matchFiles": [
+                "charts/**/README.md"
+            ],
+            "schedule": null,
+            "semanticCommitType": "chore",
+            "semanticCommitScope": "deps",
+            "additionalBranchPrefix": ""
+        },
+        {
+            "description": "Separate minor and patch updates for kindest",
+            "matchPackageNames": [
+                "kindest/node"
+            ],
+            "separateMinorPatch": true
+        },
+        {
+            "description": "Require approval for kindest major and minor updates",
+            "matchPackageNames": [
+                "kindest/node"
+            ],
+            "matchUpdateTypes": [
+                "major",
+                "minor"
+            ],
+            "dependencyDashboardApproval": true
+        }
+    ]
+}

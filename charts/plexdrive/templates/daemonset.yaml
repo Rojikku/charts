@@ -13,46 +13,38 @@ spec:
       labels:
         name: plexdrive
     spec:
-      volumes:
-        - name: media
-          hostPath:
-            path: "{{ .Values.plexdrive.path }}"
-        {{- toYaml .Values.volumes | nindent 10 }}
       containers:
-      - name: plexdrive
-        image: "{{ .Values.images.container.repository }}:{{ .Values.images.container.tag }}"
-        securityContext:
-          privileged: true # Required for bidirectional mounting
-        command: ["plexdrive"]
-        args:
-          - mount
-          {{- toYaml .Values.args | nindent 10 }}
-          - /plexdrive
-        lifecycle:
-          preStop:
+        - name: plexdrive
+          image: "{{ .Values.images.container.repository }}:{{ .Values.images.container.tag }}"
+          securityContext:
+            privileged: true # Required for bidirectional mounting
+          command: ["plexdrive"]
+          args:
+            {{- toYaml .Values.args | nindent 10 }}
+          lifecycle:
+            preStop:
+              exec:
+                command: ["/bin/sh","-c","fusermount -uz /plexdrive"]
+          startupProbe:
             exec:
-              command: ["/bin/sh","-c","fusermount -uz /plexdrive"]
-        startupProbe:
-          exec:
-            command:
-            - cat
-            - /plexdrive/health
-          periodSeconds: 10
-          failureThreshold: 300
-        livenessProbe:
-          exec:
-            command:
-            - cat
-            - /plexdrive/health
-          timeoutSeconds: 3
-          failureThreshold: 8
-        resources:
-          {{- toYaml .Values.resources | nindent 10 }}
-        volumeMounts:
-          - name: media
-            mountPath: /plexdrive
-            mountPropagation: Bidirectional
-          {{- toYaml .Values.volumeMounts | nindent 10 }}
+              command:
+              - cat
+              - /plexdrive/health
+            periodSeconds: 10
+            failureThreshold: 300
+          livenessProbe:
+            exec:
+              command:
+              - cat
+              - /plexdrive/health
+            timeoutSeconds: 3
+            failureThreshold: 8
+          resources:
+            {{- toYaml .Values.resources | nindent 10 }}
+          volumeMounts:
+            {{- toYaml .Values.volumeMounts | nindent 10 }}
+      volumes:
+        {{- toYaml .Values.volumes | nindent 10 }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

@@ -11,13 +11,9 @@ images:
 # Note: livenessProbe and startupProbe rely on the existence
 # of a "health" file in the root of your mount. Create a file for this purpose.
 
-plexdrive:
-  # mount path for  remote
-  path: /mnt/plexdrive
-  # read only file system for remote (to protect from deletion of files)
-
 # Args hardcoded to start with mount and end with /plexdrive (VM mount point)
 args:
+  - mount
   - --config=/config/
   - --cache-file=/cache/cache.bolt
   - --uid=1000
@@ -26,30 +22,34 @@ args:
   - allow_other
   # - --root-node-id=
   - -v2
-
+  - /plexdrive
 volumes:
-# Media is hardcoded to host mount path above
-  # - name: cache
-  #   hostPath:
-  #     path: /cache
-  #     type: DirectoryOrCreate
-  # - name: config
-  #   configMap:
-  #     name: plexdrive-config
-  #     items:
-  #     - key: "config.json"
-  #       path: "config.json"
-  #     - key: "token.json"
-  #       path: "token.json"
+  - name: media
+    hostPath:
+      path: /tmp/plexdrive
+  - name: cache
+    hostPath:
+      path: /cache
+      type: DirectoryOrCreate
+  - name: config
+    configMap:
+      name: plexdrive-config
+      items:
+        - key: "config.json"
+          path: "config.json"
+        - key: "token.json"
+          path: "token.json"
 
 
 volumeMounts:
-# media is hardcoded to /plexdrive and Bidirectional
-  # - name: config
-  #   mountPath: /config
-  #   readOnly: true
-  # - name: cache
-  #   mountPath: /cache
+  - name: media
+    mountPath: /plexdrive
+    mountPropagation: Bidirectional
+  - name: config
+    mountPath: /config
+    readOnly: true
+  - name: cache
+    mountPath: /cache
 
 
 resources:

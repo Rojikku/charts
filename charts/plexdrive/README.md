@@ -1,6 +1,6 @@
 # plexdrive
 
-![Version: 0.1.2](https://img.shields.io/badge/Version-0.1.2-informational?style=flat-square) ![AppVersion: v5.2.1](https://img.shields.io/badge/AppVersion-v5.2.1-informational?style=flat-square)
+![Version: 0.1.3](https://img.shields.io/badge/Version-0.1.3-informational?style=flat-square) ![AppVersion: v5.2.1](https://img.shields.io/badge/AppVersion-v5.2.1-informational?style=flat-square)
 
 A Helm chart for plexdrive
 
@@ -21,7 +21,10 @@ A Helm chart for plexdrive
 | images.container.tag | string | `"5.2.1"` |  |
 | images.pullPolicy | string | `"IfNotPresent"` |  |
 | nodeSelector | object | `{}` |  |
-| resources | object | `{}` |  |
+| resources.limits.smarter-devices/fuse | int | `1` |  |
+| resources.requests.cpu | string | `"10m"` |  |
+| resources.requests.memory | string | `"100Mi"` |  |
+| resources.requests.smarter-devices/fuse | int | `1` |  |
 | volumeMounts[0].mountPath | string | `"/plexdrive"` |  |
 | volumeMounts[0].mountPropagation | string | `"Bidirectional"` |  |
 | volumeMounts[0].name | string | `"media"` |  |

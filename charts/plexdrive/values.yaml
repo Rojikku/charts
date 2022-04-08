@@ -52,13 +52,13 @@ volumeMounts:
     mountPath: /cache
 
 
-resources: {}
-  # limits:
-  #   smarter-devices/fuse: 1
-  # requests:
-  #   smarter-devices/fuse: 1
-  #   cpu: 10m
-  #   memory: 100Mi
+resources:
+  limits:
+    smarter-devices/fuse: 1
+  requests:
+    smarter-devices/fuse: 1
+    cpu: 10m
+    memory: 100Mi
 
 nodeSelector: {}
   # plexdrive : enabled

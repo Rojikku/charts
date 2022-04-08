@@ -16,13 +16,11 @@ spec:
       containers:
         - name: plexdrive
           image: "{{ .Values.images.container.repository }}:{{ .Values.images.container.tag }}"
-          resources:
-            {{- toYaml .Values.resources | nindent 10 }}
           securityContext:
             privileged: true # Required for bidirectional mounting
           command: ["plexdrive"]
           args:
-            {{- toYaml .Values.args | nindent 10 }}
+            {{- toYaml .Values.args | nindent 12 }}
           lifecycle:
             preStop:
               exec:

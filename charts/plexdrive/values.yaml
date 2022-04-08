@@ -52,7 +52,7 @@ volumeMounts:
     mountPath: /cache
 
 
-resources:
+resources: {}
   # limits:
   #   smarter-devices/fuse: 1
   # requests:

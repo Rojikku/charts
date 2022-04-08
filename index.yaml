@@ -3,6 +3,15 @@ entries:
   plexdrive:
   - apiVersion: v1
     appVersion: v5.2.1
+    created: "2022-04-08T19:53:18.814342311Z"
+    description: A Helm chart for plexdrive
+    digest: ab739b54d5740ae29f07ce0d30bb52da6de209c76aea0a4121e24c5107c3d74b
+    name: plexdrive
+    urls:
+    - https://github.com/Rojikku/charts/releases/download/plexdrive-0.1.1/plexdrive-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v1
+    appVersion: v5.2.1
     created: "2022-04-08T19:17:31.225434264Z"
     description: A Helm chart for plexdrive
     digest: 23e5e53193e6f68db9ae63349e43d0bd24496b9f0bf5a4bb5e596f4e3bf7668c
@@ -77,4 +86,4 @@ entries:
     urls:
     - https://github.com/Rojikku/charts/releases/download/restore-0.1.0/restore-0.1.0.tgz
     version: 0.1.0
-generated: "2022-04-08T19:17:31.514993268Z"
+generated: "2022-04-08T19:53:18.814483211Z"

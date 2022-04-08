@@ -40,9 +40,9 @@ spec:
             timeoutSeconds: 3
             failureThreshold: 8
           resources:
-            {{- toYaml .Values.resources | nindent 10 }}
+            {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
-            {{- toYaml .Values.volumeMounts | nindent 10 }}
+            {{- toYaml .Values.volumeMounts | nindent 12 }}
       volumes:
         {{- toYaml .Values.volumes | nindent 10 }}
       {{- with .Values.nodeSelector }}

@@ -1,6 +1,6 @@
 # rclone
 
-![Version: v0.1.6](https://img.shields.io/badge/Version-v0.1.6-informational?style=flat-square) ![AppVersion: 1.59.0](https://img.shields.io/badge/AppVersion-1.59.0-informational?style=flat-square)
+![Version: v0.1.6](https://img.shields.io/badge/Version-v0.1.6-informational?style=flat-square) ![AppVersion: 1.59.1](https://img.shields.io/badge/AppVersion-1.59.1-informational?style=flat-square)
 
 A Helm chart for rclone
 

@@ -1,0 +1,12 @@
+{
+  "packageRules": [
+    {
+      "description": "Rclone image (for CRDs) and chart",
+      "groupName": "rclone",
+      "matchPackagePatterns": ["rclone"],
+      "matchDatasources": ["docker", "helm", "github-releases"],
+      "group": { "commitMessageTopic": "{{{groupName}}} group" },
+      "separateMinorPatch": true
+    }
+  ]
+}

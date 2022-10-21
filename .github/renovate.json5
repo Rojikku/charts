@@ -8,7 +8,9 @@
         ":enablePreCommit",
         ":automergeDigest",
         ":automergeBranchPush",
-        "github>Rojikku/charts//.github/renovate/semanticCommits"
+        "github>Rojikku/charts//.github/renovate/semanticCommits.json"
+        "github>Rojikku/charts//.github/renovate/labels.json"
+        "github>Rojikku/charts//.github/renovate/groups.json"
 ],
     "assignees": ["Rojikku"],
     "timezone": "America/New_York",

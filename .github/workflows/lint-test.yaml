@@ -72,20 +72,20 @@ jobs:
         run: |
           git diff-index --name-only --exit-code HEAD
 
-  kubeconform:
-    runs-on: ubuntu-latest
-    needs:
-      - lint-chart
-      - lint-docs
-    steps:
-    - uses: actions/checkout@master
+  # kubeconform:
+  #   runs-on: ubuntu-latest
+  #   needs:
+  #     - lint-chart
+  #     - lint-docs
+  #   steps:
+  #   - uses: actions/checkout@master
 
-    - name: Generate and validate releases
-      uses: shivjm/helm-kubeconform-action@v0.2.0
-      with:
-        additionalSchemaPaths: |
-          schemas/{{ .ResourceKind }}.json
-        chartsDirectory: "charts"
+  #   - name: Generate and validate releases
+  #     uses: shivjm/helm-kubeconform-action@v0.2.0
+  #     with:
+  #       additionalSchemaPaths: |
+  #         schemas/{{ .ResourceKind }}.json
+  #       chartsDirectory: "charts"
 
   install-chart:
     name: install-chart
@@ -94,7 +94,7 @@ jobs:
     needs:
       - lint-chart
       - lint-docs
-      - kubeconform
+      # - kubeconform
     strategy:
       matrix:
         k8s:

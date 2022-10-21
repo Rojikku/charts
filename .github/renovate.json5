@@ -1,18 +1,16 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "extends": [
-        ":enableRenovate",
-        "config:base",
+     "config:base",
         ":disableRateLimiting",
         ":dependencyDashboard",
         ":semanticCommits",
-        ":separatePatchReleases",
-        "docker:enableMajor",
+        ":enablePreCommit",
+        ":automergeDigest",
+        ":automergeBranchPush",
         "github>Rojikku/charts//.github/renovate/semanticCommits"
 ],
-    "assignees": [
-        "Rojikku"
-    ],
+    "assignees": ["Rojikku"],
     "timezone": "America/New_York",
     "regexManagers": [
         {
@@ -66,17 +64,6 @@
                 "kindest/node"
             ],
             "separateMinorPatch": true
-        },
-        {
-            "description": "Require approval for kindest major and minor updates",
-            "matchPackageNames": [
-                "kindest/node"
-            ],
-            "matchUpdateTypes": [
-                "major",
-                "minor"
-            ],
-            "dependencyDashboardApproval": true
         }
     ]
 }

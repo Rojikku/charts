@@ -58,6 +58,21 @@ entries:
   rclone:
   - apiVersion: v1
     appVersion: 1.60.0
+    created: "2022-10-21T22:55:45.386757646Z"
+    description: A Helm chart for rclone
+    digest: be9db97433ac1e03f309273a5a91ba2f7b040e1c174f76b09de6559a4ea6331f
+    home: https://rclone.org/
+    icon: https://rclone.org/img/rclone-16x16.png
+    keywords:
+    - rclone
+    maintainers:
+    - name: Rojikku
+    name: rclone
+    urls:
+    - https://github.com/Rojikku/charts/releases/download/rclone-v0.1.9/rclone-v0.1.9.tgz
+    version: v0.1.9
+  - apiVersion: v1
+    appVersion: 1.60.0
     created: "2022-10-21T22:47:31.207799072Z"
     description: A Helm chart for rclone
     digest: 8b66bc714739d2582b985fcf07181f14ac66653ee650bf99cd11c9ce93e19af2
@@ -152,4 +167,4 @@ entries:
     urls:
     - https://github.com/Rojikku/charts/releases/download/restore-0.1.0/restore-0.1.0.tgz
     version: 0.1.0
-generated: "2022-10-21T22:47:31.207863248Z"
+generated: "2022-10-21T22:55:45.386920054Z"
